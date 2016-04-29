@@ -1,0 +1,19 @@
+{
+  "name": "atom-mocha-runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/runner.js",
+  "atomTestRunner": "./lib/runner",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "tmp": "0.0.28"
+  }
+}
