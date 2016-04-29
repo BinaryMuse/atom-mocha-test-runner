@@ -4,6 +4,12 @@
 
 By default, Atom runs your tests with Jasmine. Atom allows you to specify a custom test runner using the `atomTestRunner` field in your `package.json`, but implementing a custom test runner is not straightforward. This module allows you to run your specs using Mocha with minimal fuss.
 
+## Installation
+
+```
+$ apm install [--save-dev] atom-mocha-runner
+```
+
 ## Usage
 
 ### Default Test Runner
