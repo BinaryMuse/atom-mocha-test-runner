@@ -7,7 +7,7 @@ By default, Atom runs your tests with Jasmine. Atom allows you to specify a cust
 ## Installation
 
 ```
-$ apm install [--save-dev] atom-mocha-runner
+$ apm install [--save-dev] atom-mocha-test-runner
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ $ apm install [--save-dev] atom-mocha-runner
 If you want to use all the default options, simply pass the module name as the `atomTestRunner` value:
 
 ```json
-  "atomTestRunner": "atom-mocha-runner"
+  "atomTestRunner": "atom-mocha-test-runner"
 ```
 
 Note that your `package.json` may be cached by Atom's compile cache, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom.
