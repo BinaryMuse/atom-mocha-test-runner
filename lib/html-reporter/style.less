@@ -1,0 +1,142 @@
+@gray: #cccccc;
+@lightGray: #dedede;
+@lightestGray: #fcfcfc;
+@yellow: #f0ad4e;
+@darkYellow: darken(@yellow, 20%);
+@green: #5cb85c;
+@lightGreen: lighten(@green, 20%);
+@darkGreen: darken(@green, 20%);
+@red: #d9534f;
+@lightRed: lighten(@red, 20%);
+@darkRed: darken(@red, 20%);
+@blue: #50C5FF;
+@lightBlue: lighten(@blue, 20%);
+@darkBlue: darken(@blue, 20%);
+
+@monospace: Monaco, Consolas, monospace;
+
+body {
+  overflow: auto;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+.test-status-container {
+  padding: 10px;
+  font-size: 20px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  display: flex;
+
+  &.waiting {
+    border-color: @darkBlue;
+    color: @darkBlue;
+    background-color: @lightBlue;
+  }
+
+  &.passed {
+    border-color: @darkGreen;
+    color: @darkGreen;
+    background-color: @lightGreen;
+  }
+
+  &.failed {
+    border-color: @darkRed;
+    color: @darkRed;
+    background-color: @lightRed;
+  }
+
+  .counts {
+    text-align: left;
+    flex: 1;
+  }
+
+  .test-label {
+    text-align: center;
+    flex: 1;
+  }
+
+  .time {
+    text-align: right;
+    flex: 1;
+  }
+}
+
+.dots-container {
+  padding: 10px;
+  margin: 0;
+
+  .dot {
+    display: inline;
+    list-style: none;
+    font-family: @monospace;
+    line-height: 10px;
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+    padding: 2px;
+
+    &.waiting {
+      color: @gray;
+    }
+
+    &.pending {
+      color: @yellow;
+    }
+
+    &.passed {
+      color: @green;
+    }
+
+    &.failed {
+      color: @red;
+    }
+  }
+}
+
+.failures-container {
+  margin: 10px;
+
+  .root {
+    font-size: 18px;
+
+    .header {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .tests-container {
+    margin-left: 10px;
+  }
+
+  .test {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 3px solid @red;
+  }
+
+  .assertion-failure {
+    font-weight: bold;
+    color: @red;
+  }
+
+  .stack {
+    font-family: @monospace;
+    font-size: 12px;
+    background-color: @lightestGray;
+    border: 1px solid @lightGray;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: pre;
+    overflow: scroll;
+  }
+}
