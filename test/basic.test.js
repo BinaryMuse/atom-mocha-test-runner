@@ -1,26 +1,27 @@
 'use babel'
 
 import {assert} from 'chai'
-// const assert = require('assert')
-// const assert = {
-//   equal: (a, b) => null
-// }
+import Grim from 'grim'
+
+function deprecatedFunction () {
+  Grim.deprecate("This function is deprecated! Please use `nonDeprecatedFunction()`")
+}
 
 describe('Basic Tests', () => {
   it('works', () => {
-    assert.equal(true, false)
+    assert.equal(true, true)
     // throw new Error('omg')
   })
   it('works 2', () => {
-    assert.equal(true, false)
+    assert.notInclude("test runner", "test")
   })
-  it('works 3', () => {
+  it('works 3', (done) => {
     assert.equal(true, true)
   })
   describe("nested 2", () => {
     describe("nested 3", () => {
       it('works 4', () => {
-        assert.equal(true, false)
+        assert.isAtLeast(4, 5)
       })
     })
   })
@@ -41,10 +42,13 @@ describe('Basic Tests', () => {
   })
   it('works 6', () => {
     assert.equal(true, true)
+    Grim.deprecate("This has been deprecated!")
   })
 
   describe('more stuff', () => {
     it('works 6', () => {
+      deprecatedFunction()
+      deprecatedFunction()
       assert.equal(true, false)
       return new Promise(resolve => setTimeout(resolve, 5000))
     })
@@ -54,6 +58,6 @@ describe('Basic Tests', () => {
 describe('A Second Suite', () => {
   it('fails', () => {
     assert.equal(10, 10)
-    return new Promise((resolve, rej) => setTimeout(() => rej(new Error("omg?!?")), 1000))
+    return new Promise((resolve, rej) => setTimeout(() => rej(new Error("Failure via rejected promise")), 1000))
   })
 })

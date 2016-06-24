@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Run your Atom package tests using Mocha",
   "main": "index.js",
-  "atomTestRunner": "./index",
+  "atomTestRunner": "./test/runner",
   "scripts": {
     "test": "atom --test test/"
   },
@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "etch": "^0.6.0",
+    "grim": "^2.0.1",
     "less": "^2.7.1",
     "mocha": "^2.4.5",
     "tmp": "0.0.28"
