@@ -5,7 +5,7 @@
   "main": "index.js",
   "atomTestRunner": "./index",
   "scripts": {
-    "test": "atom --test spec/"
+    "test": "atom --test test/"
   },
   "keywords": [],
   "author": "Michelle Tilley <michelle@michelletilley.net>",
