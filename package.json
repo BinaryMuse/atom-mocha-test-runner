@@ -1,6 +1,6 @@
 {
   "name": "atom-mocha-test-runner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Run your Atom package tests using Mocha",
   "main": "index.js",
   "atomTestRunner": "./test/runner",
