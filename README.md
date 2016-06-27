@@ -68,3 +68,18 @@ Returns a test runner created with the given `options` and `callback`. Both para
   * `globalAtom [default: true]` - Whether or not to assign the created Atom environment to `global.atom`
   * `testSuffixes [default: ['test.js', 'test.coffee']]` - File extensions that indicate that the file contains tests
   * `colors [default: true]` - Whether or not to colorize output on the terminal
+  * `htmlTitle [default: '']` - The string to use for the window title in the HTML reporter
+
+### Making Assertions
+
+atom-mocha-test-runner does not include any assertion libraries; it only includes the Mocha test runner. You can pull in any assertion library you want, but [Chai](http://chaijs.com/) is a great choice.
+
+```javascript
+const assert = require('chai').assert
+
+describe('Testing', function () {
+  it('works', function () {
+    assert.equal(answerToLifeUniverseAndEverything, 42)
+  })
+})
+````
