@@ -24,7 +24,7 @@ If you want to use all the default options, simply pass the module name as the `
 }
 ```
 
-Note that your `package.json` may be cached by Atom's compile cache, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom.
+Note that your `package.json` may be cached by Atom's compile cache when running tests with Atom's GUI test runner, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom.
 
 ### Programmatic Usage
 
@@ -34,15 +34,16 @@ If you'd like to perform more customization of your testing environment, you can
 {
   "name": "my-package",
   // ...
-  "atomTestRunner": "./spec/custom-runner"
+  "atomTestRunner": "./test/custom-runner"
 }
 ```
 
-Then export a test runner created from atom-mocha-test-runner from `spec/custom-runner.js`:
+Then export a test runner created via the atom-mocha-test-runner from `test/custom-runner.js`:
 
 ```javascript
 var createRunner = require('atom-mocha-test-runner').createRunner
 
+// optional options to customize the runner
 var extraOptions = {
   testSuffixes: ['-spec.js', '-spec.coffee']
 }
@@ -59,14 +60,11 @@ module.exports = createRunner(extraOptions, optionalConfigurationFunction)
 
 **`createRunner([options,] [callback])`**
 
-Returns a test runner with the given `options` and `callback`. Both parameters are optional. The returned value can be exported from your `atomTestRunner` script.
+Returns a test runner created with the given `options` and `callback`. Both parameters are optional. The returned value can be exported from your `atomTestRunner` script for Atom to consume.
 
 * `options` - An object specifying customized options:
 
-  * `options.reporter [default: 'bdd']` - Which reporter to use on the terminal
-  * `options.globalAssert [default: true]` - Whether or not to assign `chai.assert` to `global.assert`
-  * `options.globalExpect [default: true]` - Whether or not to assign `chai.expect` to `global.expect`
-  * `options.chaiShould [default: false]` - Whether or not to call `chai.should()` to install Chai's `should`-style assertions
+  * `options.reporter [default: 'dot']` - Which reporter to use on the terminal
   * `globalAtom [default: true]` - Whether or not to assign the created Atom environment to `global.atom`
-  * `testSuffixes [default: ['test.js', 'test.coffee']]` - File extensions that indicate that the file contains tests (TODO: fix me)
+  * `testSuffixes [default: ['test.js', 'test.coffee']]` - File extensions that indicate that the file contains tests
   * `colors [default: true]` - Whether or not to colorize output on the terminal
