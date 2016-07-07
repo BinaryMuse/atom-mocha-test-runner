@@ -56,154 +56,159 @@ body {
   padding: 0;
   font-family: @bodyFont;
   background-color: @offWhite;
+  font-size: initial;
+  color: initial;
+  line-height: initial;
   flex: 0 1 75%;
 }
 
-.header {
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  padding-bottom: 0;
-}
-
-.current-test {
-  margin: 20px 20px 10px;
-}
-
-.test-status-container {
-  padding: 10px;
-  font-size: 20px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  display: flex;
-
-  &.waiting {
-    border-color: @darkBlue;
-    color: @darkBlue;
-    background-color: @lightBlue;
-  }
-
-  &.passed {
-    border-color: @darkGreen;
-    color: @darkGreen;
-    background-color: @lightGreen;
-  }
-
-  &.failed {
-    border-color: @darkRed;
-    color: @darkRed;
-    background-color: @lightRed;
-  }
-
-  .counts {
-    text-align: left;
-    flex: 1;
-  }
-
-  .test-label {
-    text-align: center;
-    flex: 1;
-  }
-
-  .time {
-    text-align: right;
-    flex: 1;
-  }
-}
-
-.dots-container {
-  padding: 10px;
-  margin: 0;
-  margin-bottom: 10px;
-
-  .dot {
-    display: inline-block;
-    list-style: none;
-    font-weight: bold;
-    line-height: 10px;
-    font-size: 10px;
-    height: 10px;
-    width: 10px;
-    padding: 3px;
-
-    &.waiting {
-      color: @gray;
-    }
-
-    &.pending {
-      color: @yellow;
-    }
-
-    &.passed {
-      color: @green;
-    }
-
-    &.failed {
-      color: @red;
-    }
-  }
-}
-
-.failures-container {
-  margin: 15px 10px 10px;
-
-  .root {
+#atom-mocha-test-runner::shadow {
+  .header {
     font-size: 18px;
-
-    .header {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  }
-
-  .tests-container {
-    margin-left: 10px;
-    margin-top: 10px;
-  }
-
-  .test {
-    .with-left-border(@red);
-    line-height: 26px;
-    // margin-top: 10px;
-    // margin-bottom: 10px;
-    // padding-left: 5px;
-    // border-left: 3px solid @red;
-  }
-
-  .assertion-failure {
     font-weight: bold;
-    color: @red;
+    padding: 10px;
+    padding-bottom: 0;
   }
 
-  .stack {
-    .stack-trace
+  .current-test {
+    margin: 20px 20px 10px;
   }
-}
 
-.deprecations-container {
-  .deprecations-title {
-    margin: 20px 0;
+  .test-status-container {
     padding: 10px;
     font-size: 20px;
     border-top-style: solid;
     border-bottom-style: solid;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-color: @darkGray;
-    background-color: @lightGray;
-    text-align: center;
-    color: @darkGray;
+    display: flex;
+
+    &.waiting {
+      border-color: @darkBlue;
+      color: @darkBlue;
+      background-color: @lightBlue;
+    }
+
+    &.passed {
+      border-color: @darkGreen;
+      color: @darkGreen;
+      background-color: @lightGreen;
+    }
+
+    &.failed {
+      border-color: @darkRed;
+      color: @darkRed;
+      background-color: @lightRed;
+    }
+
+    .counts {
+      text-align: left;
+      flex: 1;
+    }
+
+    .test-label {
+      text-align: center;
+      flex: 1;
+    }
+
+    .time {
+      text-align: right;
+      flex: 1;
+    }
   }
 
-  .deprecation {
-    .with-left-border(@darkGray);
-    line-height: 24px;
-    margin-left: 20px;
+  .dots-container {
+    padding: 10px;
+    margin: 0;
+    margin-bottom: 10px;
+
+    .dot {
+      display: inline-block;
+      list-style: none;
+      font-weight: bold;
+      line-height: 10px;
+      font-size: 10px;
+      height: 10px;
+      width: 10px;
+      padding: 3px;
+
+      &.waiting {
+        color: @gray;
+      }
+
+      &.pending {
+        color: @yellow;
+      }
+
+      &.passed {
+        color: @green;
+      }
+
+      &.failed {
+        color: @red;
+      }
+    }
   }
 
-  .stack {
-    .stack-trace
+  .failures-container {
+    margin: 15px 10px 10px;
+
+    .root {
+      font-size: 18px;
+
+      .header {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .tests-container {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+
+    .test {
+      .with-left-border(@red);
+      line-height: 26px;
+      // margin-top: 10px;
+      // margin-bottom: 10px;
+      // padding-left: 5px;
+      // border-left: 3px solid @red;
+    }
+
+    .assertion-failure {
+      font-weight: bold;
+      color: @red;
+    }
+
+    .stack {
+      .stack-trace
+    }
+  }
+
+  .deprecations-container {
+    .deprecations-title {
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 20px;
+      border-top-style: solid;
+      border-bottom-style: solid;
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      border-color: @darkGray;
+      background-color: @lightGray;
+      text-align: center;
+      color: @darkGray;
+    }
+
+    .deprecation {
+      .with-left-border(@darkGray);
+      line-height: 24px;
+      margin-left: 20px;
+    }
+
+    .stack {
+      .stack-trace
+    }
   }
 }
