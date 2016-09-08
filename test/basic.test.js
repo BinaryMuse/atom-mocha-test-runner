@@ -8,6 +8,14 @@ function deprecatedFunction () {
 }
 
 describe('Basic Tests', () => {
+  beforeEach(() => {
+    global.atom = global.buildAtomEnvironment()
+  })
+
+  afterEach(() => {
+    global.atom.destroy()
+  })
+
   it('works', () => {
     assert.equal(true, true)
     // throw new Error('omg')
