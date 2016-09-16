@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Atom Mocha Test Runner by BinaryMuse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Atom Mocha Test Runner</h1>
+      <h2 class="project-tagline">Run your Atom package tests using Mocha</h2>
+      <a href="https://github.com/BinaryMuse/atom-mocha-test-runner" class="btn">View on GitHub</a>
+      <a href="https://github.com/BinaryMuse/atom-mocha-test-runner/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/BinaryMuse/atom-mocha-test-runner/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="atom-mocha-test-runner" class="anchor" href="#atom-mocha-test-runner" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Atom Mocha Test Runner</h1>
+
+<p><g-emoji alias="construction" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a7.png">🚧</g-emoji> Work in Progress <g-emoji alias="construction" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a7.png">🚧</g-emoji></p>
+
+<p>By default, Atom runs your tests with Jasmine. Atom allows you to specify a custom test runner using the <code>atomTestRunner</code> field in your <code>package.json</code>, but implementing a custom test runner is not straightforward. This module allows you to run your specs using Mocha with minimal fuss.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>$ apm install [--save-dev] atom-mocha-test-runner
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="default-test-runner" class="anchor" href="#default-test-runner" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Test Runner</h3>
+
+<p>If you want to use all the default options, simply pass the module name as the <code>atomTestRunner</code> value in your <code>package.json</code>:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>my-package<span class="pl-pds">"</span></span>,
+  <span class="pl-c">// ...</span>
+  <span class="pl-s"><span class="pl-pds">"</span>atomTestRunner<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>atom-mocha-test-runner<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>Note that your <code>package.json</code> may be cached by Atom's compile cache when running tests with Atom's GUI test runner, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom.</p>
+
+<h3>
+<a id="programmatic-usage" class="anchor" href="#programmatic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programmatic Usage</h3>
+
+<p>If you'd like to perform more customization of your testing environment, you can create a custom runner while still utilizing atom-mocha-test-runner for most of the heavy lifting. First, set <code>atomTestRunner</code> to a <em>relative</em> path to a file:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>my-package<span class="pl-pds">"</span></span>,
+  <span class="pl-c">// ...</span>
+  <span class="pl-s"><span class="pl-pds">"</span>atomTestRunner<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>./test/custom-runner<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>Then export a test runner created via the atom-mocha-test-runner from <code>test/custom-runner.js</code>:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> createRunner <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>atom-mocha-test-runner<span class="pl-pds">'</span></span>).<span class="pl-smi">createRunner</span>
+
+<span class="pl-c">// optional options to customize the runner</span>
+<span class="pl-k">var</span> extraOptions <span class="pl-k">=</span> {
+  testSuffixes<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>-spec.js<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>-spec.coffee<span class="pl-pds">'</span></span>]
+}
+
+<span class="pl-k">var</span> <span class="pl-en">optionalConfigurationFunction</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">mocha</span>) {
+  <span class="pl-c">// If provided, atom-mocha-test-runner will pass the mocha instance</span>
+  <span class="pl-c">// to this function, so you can do whatever you'd like to it.</span>
+}
+
+<span class="pl-c1">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> <span class="pl-en">createRunner</span>(extraOptions, optionalConfigurationFunction)</pre></div>
+
+<h4>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h4>
+
+<p><strong><code>createRunner([options,] [callback])</code></strong></p>
+
+<p>Returns a test runner created with the given <code>options</code> and <code>callback</code>. Both parameters are optional. The returned value can be exported from your <code>atomTestRunner</code> script for Atom to consume.</p>
+
+<ul>
+<li>
+<p><code>options</code> - An object specifying customized options:</p>
+
+<ul>
+<li>
+<code>options.reporter [default: 'dot']</code> - Which reporter to use on the terminal</li>
+<li>
+<code>globalAtom [default: true]</code> - Whether or not to assign the created Atom environment to <code>global.atom</code>
+</li>
+<li>
+<code>testSuffixes [default: ['test.js', 'test.coffee']]</code> - File extensions that indicate that the file contains tests</li>
+<li>
+<code>colors [default: true]</code> - Whether or not to colorize output on the terminal</li>
+<li>
+<code>htmlTitle [default: '']</code> - The string to use for the window title in the HTML reporter</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="making-assertions" class="anchor" href="#making-assertions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making Assertions</h3>
+
+<p>atom-mocha-test-runner does not include any assertion libraries; it only includes the Mocha test runner. You can pull in any assertion library you want, but <a href="http://chaijs.com/">Chai</a> is a great choice.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">assert</span> <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>chai<span class="pl-pds">'</span></span>).<span class="pl-smi">assert</span>
+
+<span class="pl-en">describe</span>(<span class="pl-s"><span class="pl-pds">'</span>Testing<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+  <span class="pl-en">it</span>(<span class="pl-s"><span class="pl-pds">'</span>works<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+    <span class="pl-smi">assert</span>.<span class="pl-en">equal</span>(answerToLifeUniverseAndEverything, <span class="pl-c1">42</span>)
+  })
+})</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/BinaryMuse/atom-mocha-test-runner">Atom Mocha Test Runner</a> is maintained by <a href="https://github.com/BinaryMuse">BinaryMuse</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
