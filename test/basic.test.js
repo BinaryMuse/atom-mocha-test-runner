@@ -16,45 +16,31 @@ describe('Basic Tests', () => {
     global.atom.destroy()
   })
 
-  it('works', () => {
+  it('passes', () => {
     assert.equal(true, true)
-    // throw new Error('omg')
   })
-  it('works 2', () => {
+
+  it('fails', () => {
     assert.notInclude("test runner", "test")
   })
-  it('works 3', (done) => {
-    assert.equal(true, true)
-  })
-  describe("nested 2", () => {
-    describe("nested 3", () => {
-      it('works 4', () => {
+
+  describe("nested at one level", () => {
+    describe("nested at two levels", () => {
+      it('reports failures correctly', () => {
         assert.isAtLeast(4, 5)
       })
     })
   })
-  it('does more stuff yay')
-  it('works 5', () => {
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-    assert.equal(true, true)
-  })
-  it('works 6', () => {
+
+  it('marks missing it blocks as pending')
+
+  it('reports deprecations', () => {
     assert.equal(true, true)
     Grim.deprecate("This has been deprecated!")
   })
 
-  describe('more stuff', () => {
-    it('works 6', () => {
+  describe('with a second describe block', () => {
+    it('fails synchronously when an assertion fails', () => {
       deprecatedFunction()
       deprecatedFunction()
       assert.equal(true, false)
@@ -64,7 +50,7 @@ describe('Basic Tests', () => {
 })
 
 describe('A Second Suite', () => {
-  it('fails', () => {
+  it('fails asynchronously when a rejected promise is returned', () => {
     assert.equal(10, 10)
     return new Promise((resolve, rej) => setTimeout(() => rej(new Error("Failure via rejected promise")), 1000))
   })
