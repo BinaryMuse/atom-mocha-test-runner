@@ -11,11 +11,11 @@
   "author": "Michelle Tilley <michelle@michelletilley.net>",
   "license": "MIT",
   "dependencies": {
-    "etch": "^0.6.0",
+    "etch": "^0.8.0",
     "grim": "^2.0.1",
     "less": "^2.7.1",
-    "mocha": "^2.4.5",
-    "tmp": "0.0.28"
+    "mocha": "^3.0.0",
+    "tmp": "0.0.31"
   },
   "devDependencies": {
     "chai": "^3.5.0"
