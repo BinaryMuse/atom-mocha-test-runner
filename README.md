@@ -22,7 +22,7 @@ If you want to use all the default options, simply pass the module name as the `
 }
 ```
 
-Note that your `package.json` may be cached by Atom's compile cache when running tests with Atom's GUI test runner, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom.
+Note that your `package.json` may be cached by Atom's compile cache when running tests with Atom's GUI test runner, so if adding or changing that field doesn't seem to work, try quitting and restarting Atom. Also note that by default, the runner looks for tests with a `.test.js` or `.test.coffee` file extension, e.g. `my-component.test.js`.
 
 ### Programmatic Usage
 
