@@ -65,7 +65,7 @@ Returns a test runner created with the given `options` and `callback`. Both para
   * `options.reporter [default: 'dot']` - Which reporter to use on the terminal
   * `globalAtom [default: true]` - Whether or not to assign the created Atom environment to `global.atom`
   * `testSuffixes [default: ['test.js', 'test.coffee']]` - File extensions that indicate that the file contains tests
-  * `colors [default: true]` - Whether or not to colorize output on the terminal
+  * `colors [default: true (false on Windows)]` - Whether or not to colorize output on the terminal
   * `htmlTitle [default: '']` - The string to use for the window title in the HTML reporter
 
 ### Making Assertions
