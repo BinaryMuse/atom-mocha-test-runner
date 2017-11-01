@@ -9,6 +9,14 @@
   },
   "keywords": [],
   "author": "Michelle Tilley <michelle@michelletilley.net>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BinaryMuse/atom-mocha-test-runner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BinaryMuse/atom-mocha-test-runner/issues"
+  },
+  "homepage": "https://github.com/BinaryMuse/atom-mocha-test-runner#readme",
   "license": "MIT",
   "dependencies": {
     "etch": "^0.8.0",
