@@ -67,6 +67,7 @@ Returns a test runner created with the given `options` and `callback`. Both para
   * `testSuffixes [default: ['test.js', 'test.coffee']]` - File extensions that indicate that the file contains tests
   * `colors [default: true (false on Windows)]` - Whether or not to colorize output on the terminal
   * `htmlTitle [default: '']` - The string to use for the window title in the HTML reporter
+  * `htmlRemoveAtomStyle [default: true]` - Whether to remove atom-style(which define basic style of editor, pane etc..) in html-test.
 
 ### Making Assertions
 
