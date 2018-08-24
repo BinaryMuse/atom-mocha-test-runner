@@ -32,6 +32,30 @@ describe('Basic Tests', () => {
     })
   })
 
+  describe('diffing', () => {
+    it('single-line strings', () => {
+      assert.strictEqual('aaa bbb ccc', 'aaa zzz ccc')
+    })
+
+    it('multi-line strings', () => {
+      assert.strictEqual('abc\ndef\nghi\n', 'abc\nzzz\nghi\n')
+    })
+
+    it('objects', () => {
+      assert.deepEqual(
+        {a: 10, b: 'bbb', c: { ca: 'string before', cb: 'unchanged' }},
+        {a: 10, b: 'zzz', c: { ca: 'string after', cb: 'unchanged' }},
+      )
+    })
+
+    it('arrays', () => {
+      assert.deepEqual(
+        [1, 2, 'aaa', 6, 7, 100, {a: 10}, 8, 9],
+        [1, 2, 'bbb', 6, 7, 8, {a: 40}, 8, 9],
+      )
+    })
+  })
+
   it('marks missing it blocks as pending')
 
   it('reports deprecations', () => {

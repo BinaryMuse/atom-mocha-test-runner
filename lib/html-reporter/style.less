@@ -188,6 +188,36 @@ body {
       color: @red;
     }
 
+    .diff {
+      line-height: initial;
+      display: pre;
+      white-space: pre;
+      font-family: @monospaceFont;
+      font-size: 13px;
+      background-color: @lightestGray;
+      border: 1px solid @lightGray;
+      padding: 5px;
+      border-radius: 5px;
+      overflow: scroll;
+      margin-top: 5px;
+
+      &-added, &-removed {
+        padding: 2px 4px;
+        margin: 0 1px;
+        border-radius: 2px;
+      }
+
+      &-added {
+        background-color: @darkGreen;
+        color: @lightGreen;
+      }
+
+      &-removed {
+        background-color: @darkRed;
+        color: @lightRed;
+      }
+    }
+
     .stack {
       .stack-trace
     }
