@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BinaryMuse/atom-mocha-test-runner#readme",
   "license": "MIT",
   "dependencies": {
+    "diff": "3.5.0",
     "etch": "^0.8.0",
     "grim": "^2.0.1",
     "less": "^2.7.1",
