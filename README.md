@@ -5,7 +5,7 @@ By default, Atom runs your tests with Jasmine (for more information on testing p
 ## Installation
 
 ```
-$ apm install [--save-dev] atom-mocha-test-runner
+$ apm install [--save-dev] @atom/mocha-test-runner
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ If you want to use all the default options, simply pass the module name as the `
 {
   "name": "my-package",
   // ...
-  "atomTestRunner": "atom-mocha-test-runner"
+  "atomTestRunner": "@atom/mocha-test-runner"
 }
 ```
 
@@ -39,7 +39,7 @@ If you'd like to perform more customization of your testing environment, you can
 Then export a test runner created via the atom-mocha-test-runner from `test/custom-runner.js`:
 
 ```javascript
-var createRunner = require('atom-mocha-test-runner').createRunner
+var createRunner = require('@atom/mocha-test-runner').createRunner
 
 // optional options to customize the runner
 var extraOptions = {
@@ -73,7 +73,7 @@ Returns a test runner created with the given `options` and `callback`. Both para
 
 ### Making Assertions
 
-atom-mocha-test-runner does not include any assertion libraries; it only includes the Mocha test runner. You can pull in any assertion library you want, but [Chai](http://chaijs.com/) is a great choice.
+@atom/mocha-test-runner does not include any assertion libraries; it only includes the Mocha test runner. You can pull in any assertion library you want, but [Chai](http://chaijs.com/) is a great choice.
 
 ```javascript
 const assert = require('chai').assert
