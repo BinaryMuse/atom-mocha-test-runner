@@ -19,7 +19,7 @@
   "homepage": "https://github.com/atom/atom-mocha-test-runner#readme",
   "license": "MIT",
   "dependencies": {
-    "diff": "4.0.1",
+    "diff": "4.0.2",
     "etch": "0.14.0",
     "grim": "^2.0.1",
     "klaw-sync": "6.0.0",
